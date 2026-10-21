@@ -35,7 +35,7 @@ target("OpenAnimationReplacer-IEDConditionExtensions")
     add_deps("commonlibsse-ng")
     add_packages("fmt", "spdlog")
     -- add commonlibsse-ng plugin
-    add_rules("commonlibsse.plugin", {
+    add_rules("commonlibsse-ng.plugin", {
         name = "OpenAnimationReplacer-IEDConditionExtensions",
         author = "SlavicPotato",
         description = "SKSE64 plugin that lets OAR read data from IED and SDS via conditions"
