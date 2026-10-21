@@ -105,7 +105,7 @@ SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 	InitLogging();
 
 	const auto plugin = SKSE::PluginDeclaration::GetSingleton();
-	logs::info("{} v{} is loading...", plugin->GetName(), plugin->GetVersion());
+	logs::info("{} v{} is loading...", plugin->GetName(), plugin->GetVersion().string());
 
 	SKSE::Init(a_skse);
 	InitMessaging();
