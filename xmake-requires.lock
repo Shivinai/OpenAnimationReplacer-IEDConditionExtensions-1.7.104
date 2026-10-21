@@ -11,14 +11,6 @@
             },
             version = "3.26.4-msvc4"
         },
-        ["commonlibsse-ng#dc79ba23"] = {
-            repo = {
-                branch = "master",
-                commit = "a723eaef7144dcd2eec359a171629c82a631882d",
-                url = "https://github.com/xmake-io/xmake-repo.git"
-            },
-            version = "v3.7.0"
-        },
         ["fmt#31fecfc4"] = {
             repo = {
                 branch = "master",
