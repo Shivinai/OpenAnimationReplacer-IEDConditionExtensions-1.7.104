@@ -8,28 +8,26 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-
+    
+      - uses: actions/checkout@v4
+        with:
+          repository: CharmedBaryon/CommonLibSSE-NG
+          ref: main
+          path: extern/CommonLibSSE-NG
+          submodules: recursive
+    
       - uses: xmake-io/github-action-setup-xmake@v1
         with:
           xmake-version: latest
-
+    
       - name: Update xmake repositories
         working-directory: ${{ runner.temp }}
         run: xmake repo --update
-      - name: Clone CommonLibSSE-NG
-        run: git clone --depth 1 --branch <main> <url репозитория CommonLibSSE-NG> extern/CommonLibSSE-NG
+    
       - name: Drop pinned dependency versions
         run: Remove-Item xmake-requires.lock -ErrorAction SilentlyContinue
-
+    
       - name: Build
         run: |
           xmake f -y -m releasedbg
           xmake -y -v
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: OAR-IEDConditionExtensions
-          path: |
-            build/windows/x64/releasedbg/*.dll
-            xmake-requires.lock
-            
