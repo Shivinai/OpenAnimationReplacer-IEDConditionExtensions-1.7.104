@@ -5,7 +5,7 @@ set_xmakever("2.7.8")
 set_project("OpenAnimationReplacer-IEDConditionExtensions")
 set_version("1.0.1")
 set_license("gplv3")
-set_languages("c++20")
+set_languages("c++23")
 set_optimize("faster")
 set_warnings("allextra", "error")
 
