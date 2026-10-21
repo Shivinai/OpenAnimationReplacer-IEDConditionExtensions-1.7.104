@@ -25,16 +25,17 @@ add_rules("plugin.vsxmake.autoupdate")
 set_policy("package.requires_lock", true)
 
 -- require packages
-add_requires("commonlibsse-ng", { configs = { skyrim_vr = true } })
+set_config("skyrim_vr", true)
+includes("extern/CommonLibSSE-NG")
 -- add_requireconfs("**.fmt", { override = true, version = "11.0.2" })
 
 -- targets
 target("OpenAnimationReplacer-IEDConditionExtensions")
     -- add packages to target
-    add_packages("fmt", "spdlog", "commonlibsse-ng")
-
+    add_deps("commonlibsse-ng")
+    add_packages("fmt", "spdlog")
     -- add commonlibsse-ng plugin
-    add_rules("@commonlibsse-ng/plugin", {
+    add_rules("commonlibsse.plugin", {
         name = "OpenAnimationReplacer-IEDConditionExtensions",
         author = "SlavicPotato",
         description = "SKSE64 plugin that lets OAR read data from IED and SDS via conditions"
