@@ -15,6 +15,11 @@ jobs:
           ref: main
           path: extern/CommonLibSSE-NG
           submodules: recursive
+      - name: Inspect CommonLibSSE-NG
+        shell: bash
+        run: |
+          ls extern/CommonLibSSE-NG
+          grep -rn "rule(" extern/CommonLibSSE-NG --include=*.lua || true
     
       - uses: xmake-io/github-action-setup-xmake@v1
         with:
