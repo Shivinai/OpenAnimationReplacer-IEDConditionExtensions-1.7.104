@@ -13,10 +13,12 @@ jobs:
         with:
           xmake-version: latest
 
-      - name: Update dependencies
-        run: |
-          xmake repo --update
-          xmake require --upgrade -y
+      - name: Update xmake repositories
+        working-directory: ${{ runner.temp }}
+        run: xmake repo --update
+
+      - name: Drop pinned dependency versions
+        run: Remove-Item xmake-requires.lock -ErrorAction SilentlyContinue
 
       - name: Build
         run: |
