@@ -26,6 +26,7 @@ set_policy("package.requires_lock", true)
 
 -- require packages
 add_requires("commonlibsse-ng", { configs = { skyrim_vr = true } })
+add_requireconfs("**.fmt", { override = true, version = "11.0.2" })
 
 -- targets
 target("OpenAnimationReplacer-IEDConditionExtensions")
