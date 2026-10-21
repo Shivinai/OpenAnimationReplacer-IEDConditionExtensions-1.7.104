@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
+
+      - name: Update dependencies
+        run: |
+          xmake repo --update
+          xmake require --upgrade -y
+
+      - name: Build
+        run: |
+          xmake f -y -m releasedbg
+          xmake -y -v
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OAR-IEDConditionExtensions
+          path: |
+            build/windows/x64/releasedbg/*.dll
+            xmake-requires.lock
